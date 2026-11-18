@@ -1,6 +1,7 @@
 name: 'nyc_analytics'
 version: '1.0.0'
 config-version: 2
+
 # Some default settings for dbt
 profile: 'default'
 
@@ -13,29 +14,37 @@ snapshot-paths: ["snapshots"]
 
 target-path: "target"
 clean-targets:
- - "target"
- - "dbt_packages"
+  - "target"
+  - "dbt_packages"
 
 # Set up models, which are basically SQL files, to create tables
 models:
- nyc_analytics:
-   +materialized: table
+  nyc_analytics:
+    +materialized: table
 
-   assignment_work:
-     staging:
-       +materialized: table
-       +schema: nyc_homework_staging
+    assignment_work:
+      staging:
+        +materialized: table
+        +schema: nyc_homework_staging
 
-     marts:
-       +materialized: table
-       +schema: nyc_homework_warehouse_marts
-      
-       conformed:
-         +materialized: table
+      marts:
+        +materialized: table
+        +schema: nyc_homework_warehouse_marts
 
-       dob_job_filings:
-         +materialized: table
+        conformed:
+          +materialized: table
 
-       dot_311:
-         +materialized: table
+        dob_job_filings:
+          +materialized: table
 
+        dot_311:
+          +materialized: table
+
+    project_work:
+      staging:
+        +materialized: table
+        +schema: cis9440_project_g1_staging
+
+      marts:
+        +materialized: table
+        +schema: cis9440_project_g1_marts
