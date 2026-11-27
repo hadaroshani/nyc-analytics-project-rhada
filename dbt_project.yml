@@ -43,8 +43,8 @@ models:
     project_work:
       staging:
         +materialized: table
-        +schema: cis9440_project_g1_staging
+        +schema: nyc_project_staging_central1
 
       marts:
         +materialized: table
-        +schema: cis9440_project_g1_marts
+        +schema: nyc_project_warehouse_marts
